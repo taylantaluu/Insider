@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="methods" thread-count="3">
+
+    <parameter name="baseUrl" value="https://petstore.swagger.io/v2"/>
+    <test name="Pet API Tests">
+        <groups>
+            <run>
+                <include name="create"/>
+                <include name="read"/>
+                <include name="update"/>
+                <include name="delete"/>
+                <include name="regression"/>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="PetStoreAPITest">
+                <methods>
+
+                    <include name="testCreateNewPet"/>
+                    <include name="testCreatePetWithInvalidData"/>
+
+                    <include name="testGetExistingPet"/>
+                    <include name="testGetNonExistingPet"/>
+
+                    <include name="testUpdatePet"/>
+                    <include name="testUpdateNonExistingPet"/>
+
+                    <include name="testDeletePet"/>
+                    <include name="testDeleteNonExistingPet"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
